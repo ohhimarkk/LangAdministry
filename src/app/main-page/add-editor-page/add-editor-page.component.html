@@ -1,0 +1,22 @@
+
+<form class="col s12" [formGroup]="adminForm">
+  <div class="row white" style="position: absolute; left: 40%; bottom: 40%; width: 40%; border-radius: 20px; height: 30%;">
+    <p style="font-weight: lighter; font-size: x-large; position: absolute; left: 7%; bottom: 70%;">
+      Добавление редактора
+    </p>
+    <div class="input-field col s6"  style="position: relative; top: 30%; width: 70%;">
+      <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Логин</span>
+      <i class="material-icons prefix">mode_edit</i>
+      <textarea class="materialize-textarea" formControlName="login"></textarea>
+    </div>
+    <div class="input-field col s6"  style="position: relative; top: 30%; width: 70%;">
+      <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Пароль</span>
+      <i class="material-icons prefix">mode_edit</i>
+      <textarea class="materialize-textarea" formControlName="password"></textarea>
+    </div>
+    <button class="waves-effect waves-light btn-large" (click)="addAdmin()" [disabled]="adminForm.invalid"
+            style="position: absolute; left: 80%; top: 65%; width: 10%; height: 13%;">
+      <i class="material-icons" style="position: relative; bottom: 20%;">send</i>
+    </button>
+  </div>
+</form>

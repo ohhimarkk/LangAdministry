@@ -1,0 +1,106 @@
+
+<div *ngIf="!loading">
+  <div class="input-field col s12" style="width: 35%;" *ngFor="let theme of themes.keys()" (click)="uploadTasks(theme)">
+    <select class="browser-default" #selectList (change)="questionClick(selectList.value, theme)">
+      <option disabled selected>{{theme}}</option>
+      <option class="cyan-text" *ngFor="let task of tasks | keyvalue" style="font-size: xx-large;">
+        {{task.key}}
+      </option>
+    </select>
+    <button class="waves-effect waves-light btn-large"
+            style="position: absolute; left: 105%; bottom: 20%; width: 5%; height: 80%; border-radius: 100px; z-index: 1;"
+            (click)="addTaskToTheme(theme)">
+      <i class="material-icons" style="position: absolute; top: -22%; left: 30%">add</i>
+    </button>
+    <button class="waves-effect waves-light btn-large materialize-red"
+            style="position: absolute; left: 115%; bottom: 20%; width: 5%; height: 80%; border-radius: 100px;"
+            (click)="deleteTheme(theme)">
+      <i class="material-icons " style="position: absolute; top: -22%; left: 30%">close</i>
+    </button>
+  </div>
+</div>
+
+<form class="col s12" [formGroup]="themeForm">
+  <div class="row white" style="position: absolute; left: 75%; bottom: 70%; width: 20%; border-radius: 20px; height: 13%;">
+    <div class="input-field col s6"  style="position: relative; top: 30%; width: 70%;">
+      <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Название новой темы</span>
+      <i class="material-icons prefix">mode_edit</i>
+      <textarea class="materialize-textarea" formControlName="themeName"></textarea>
+    </div>
+    <button class="waves-effect waves-light btn-large" style="position: absolute; left: 75%; top: 50%; width: 20%; height: 30%;"
+            (click)="submitNewTheme()">
+      <i class="material-icons" style="position: relative; bottom: 20%;">send</i>
+    </button>
+  </div>
+</form>
+
+<div [hidden]="hideForm" class="white"
+     style="position: absolute; left: 35%; top: 5%; width: 30%;
+      height: 60%; border-radius: 30px; border: groove #000; border-width: 0 1px;">
+  <h1 style="font-weight: lighter; font-size: xx-large; position: relative; left: 25%; bottom: 6%">Редактирование</h1>
+  <p style="font-weight: lighter; font-size: x-large; position: absolute; left: 7%; bottom: 79%;">
+    Тема : {{currentThemeId}}
+  </p>
+  <div class="row">
+    <form class="col s12" [formGroup]="form" >
+      <div class="row" style="width: 200%">
+        <div class="input-field col s6">
+          <span class="grey-text" style="position: absolute; left: 10%; bottom: 90%;">Вопрос</span>
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea" formControlName="question"></textarea>
+        </div>
+      </div>
+      <div class="row" style="width: 80%">
+        <div class="input-field col s6">
+          <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Вариант 1</span>
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea" formControlName="variant1"></textarea>
+        </div>
+      </div>
+      <div class="row" style="width: 80%; position:absolute; left: 50%; bottom: 42%;">
+        <div class="input-field col s6">
+          <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Вариант 2</span>
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea" formControlName="variant2"></textarea>
+        </div>
+      </div>
+      <div class="row" style="width: 80%; position:relative;">
+        <div class="input-field col s6">
+          <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Вариант 3</span>
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea" formControlName="variant3"></textarea>
+        </div>
+      </div>
+      <div class="row" style="width: 80%; position:absolute; left: 50%; bottom: 21%;">
+        <div class="input-field col s6">
+          <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Вариант 4</span>
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea" formControlName="variant4"></textarea>
+        </div>
+      </div>
+      <div class="row" style="width: 80%;">
+        <div class="input-field col s6">
+          <span class="grey-text" style="position: absolute; left: 25%; bottom: 90%;">Номер правильного ответа</span>
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea class="materialize-textarea" formControlName="answerNum"></textarea>
+        </div>
+      </div>
+    </form>
+    <button class="waves-effect waves-light btn-large" style="position: absolute; left: 70%; bottom: 7%;"
+       (click)="submitAndClose()" [disabled]="form.invalid">
+      Submit
+    </button>
+    <button class="waves-effect waves-light"
+            style="position: absolute; left: 83%; bottom: 91%;"
+            (click)="close()">
+      <i class="material-icons">close</i>
+    </button>
+    <button class="waves-effect waves-light btn-large materialize-red"
+            style="position: absolute; left: 45%; bottom: 7%; width: 18%; height: 10%;"
+            [disabled]="newTask" (click)="deleteTask(currentTaskId)">
+      <p style="position: relative; right: 4%; bottom: 24%;">Delete</p>
+    </button>
+  </div>
+</div>
+
+

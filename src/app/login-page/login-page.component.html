@@ -1,0 +1,43 @@
+<form
+  class="card"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="card-content">
+    <span class="card-title">Войти в систему</span>
+    <div class="input-field">
+      <input
+        id="login"
+        type="email"
+        formControlName="login"
+      >
+      <label for="login">Логин:</label>
+    </div>
+    <div class="input-field">
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+      >
+      <label for="password">Пароль:</label>
+    </div>
+  </div>
+
+  <div class="card-action">
+    <button
+      class="modal-action btn waves-effect"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      <a href="main">Подтвердить</a>
+    </button>
+    <span
+      id="submit-helper"
+      class="helper-text blue-grey-text"
+      *ngIf="!serverResponse"
+    >
+      Данные введены неверно!
+    </span>
+  </div>
+</form>
+
