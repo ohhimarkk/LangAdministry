@@ -10,14 +10,14 @@ import {Task} from "../models/Task";
 
 export class FirebaseController {
   firebaseConfig = {
-    apiKey: "AIzaSyCVDk8USt-hnvxzcPI4m4uaUXFCfp9nMZk",
-    authDomain: "langlearn-d6986.firebaseapp.com",
-    databaseURL: "https://langlearn-d6986-default-rtdb.firebaseio.com",
-    projectId: "langlearn-d6986",
-    storageBucket: "langlearn-d6986.appspot.com",
-    messagingSenderId: "286610354914",
-    appId: "1:286610354914:web:84985182b1ac29c9a064bb",
-    measurementId: "G-YNM56EH0LV"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   };
 
   app: FirebaseApp
